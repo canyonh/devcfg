@@ -1,1 +1,1 @@
-. ./bootstrap.sh
+./apt-install.sh
