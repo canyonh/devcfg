@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export ZDOTDIR=$HOME/devcfg/.config/zsh
-# HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history
 setopt appendhistory
 
 # some useful options (man zshoptions)
@@ -84,3 +84,6 @@ export BROWSER="brave"
 
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+export PATH=$HOME/bin:/usr/local/bin:$PYTHON_BIN_PATH:$PATH:/sbin
+
