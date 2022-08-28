@@ -8,8 +8,10 @@ apt update
 sudo apt install -y git python3 python3-pip openssh-server corkscrew ripgrep fzf
 
 # nvim
-sudo apt update
-sudo apt install neovim
+sudo apt install -y neovim
+
+# tmux
+sudo apt install -y tmux
 
 # build tools and nvim support
 sudo apt install build-essential gcc g++ cmake clang libclang-dev nodejs npm
