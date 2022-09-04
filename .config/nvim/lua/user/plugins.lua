@@ -23,6 +23,7 @@ vim.cmd [[
   augroup end
 ]]
 
+-- Add trerm debug
 vim.cmd "packadd termdebug"
 
 -- Use a protected call so we don't error out on first use
@@ -46,6 +47,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and snippets
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
