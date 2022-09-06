@@ -83,6 +83,9 @@ return packer.startup(function(use)
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
 
+  -- git
+  use "lewis6991/gitsigns.nvim"
+
   use { 'alexghergh/nvim-tmux-navigation', config = function()
       local nvim_tmux_nav = require('nvim-tmux-navigation')
       nvim_tmux_nav.setup {
