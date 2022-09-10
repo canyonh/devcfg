@@ -23,8 +23,10 @@ vim.cmd [[
   augroup end
 ]]
 
--- Add trerm debug
+-- Add trerm debug and setting its layout
 vim.cmd "packadd termdebug"
+vim.g["termdebug_wide"] = 163
+
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
