@@ -77,3 +77,6 @@ keymap("t", "<esc>", "<C-\\><C-N>", term_opts)
 -- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
  keymap("n", "<c-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
  keymap("n", "<c-n>", "<cmd>Telescope live_grep<cr>", opts)
+
+-- todo make a command
+-- remove all non-printable char %s/[^[:print:]]//g

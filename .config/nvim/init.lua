@@ -10,4 +10,4 @@ require "user.autopairs"
 require "user.gitsigns"
 require "user.toggleterm"
 
-vim.cmd "colorscheme tokyonight"
+vim.cmd "colorscheme duskfox"

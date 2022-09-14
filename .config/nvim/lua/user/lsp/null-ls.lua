@@ -17,6 +17,6 @@ null_ls.setup({
     --  diagnostics.flake8
         formatting.black,
         formatting.clang_format,
-        diagnostics.cppcheck
+    --  diagnostics.cppcheck
 	},
 })
