@@ -1,4 +1,4 @@
-# todo
+#!/bin/bash
 pushd .
 
 mkdir -p $HOME/source
