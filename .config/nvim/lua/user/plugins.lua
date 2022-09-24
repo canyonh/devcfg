@@ -78,7 +78,6 @@ return packer.startup(function(use)
 
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-
     -- Telescope
     use "nvim-telescope/telescope.nvim"
 
@@ -96,8 +95,8 @@ return packer.startup(function(use)
         run = ":TSInstall python"
     }
 
-    use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
+    use "theHamsta/nvim-dap-virtual-text"
 
     use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
