@@ -75,8 +75,20 @@ keymap("t", "<esc>", "<C-\\><C-N>", term_opts)
 -- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 -- keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 -- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
- keymap("n", "<c-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
- keymap("n", "<c-n>", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<c-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<c-n>", "<cmd>Telescope live_grep<cr>", opts)
+
+-- DAP
+keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<F17>", "<cmd>lua require'dap'.terminate()<cr>", opts) -- Shift-F5
+keymap("n", "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+
+keymap("n", "<F10>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+keymap("n", "<F11>", "<cmd>lua require'dap'.step_into()<cr>", opts)
+keymap("n", "<F23>", "<cmd>lua require'dap'.step_out()<cr>", opts) -- Shift-F11
+keymap("n", "<F6>", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+keymap("n", "<F7>", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 
 -- todo make a command
 -- remove all non-printable char %s/[^[:print:]]//g
+
