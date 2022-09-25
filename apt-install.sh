@@ -1,6 +1,7 @@
 #!/bin/bash -x
 
 # update repo and packages
+sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_18.x | bash -"
 sudo add-apt-repository ppa:neovim-ppa/stable
 apt update
 
