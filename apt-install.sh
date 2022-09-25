@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-# update repo and packages
+# update repo and packages, included nodejs is too old for neovim
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_18.x | bash -"
 sudo add-apt-repository ppa:neovim-ppa/stable
 apt update
@@ -22,5 +22,5 @@ npm i neovim
 # install black
 pip install black==22.6.0
 
-# install pipenv via python. apt has wrong info
+# install pipenv via python. apt has wrong version which does not work with the others
 pip install pipenv
