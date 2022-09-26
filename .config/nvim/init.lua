@@ -12,5 +12,6 @@ require "user.autopairs"
 require "user.gitsigns"
 require "user.toggleterm"
 require "user.dap"
+require "user.nvim-tree"
 
 vim.cmd "colorscheme duskfox"

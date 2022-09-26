@@ -52,6 +52,10 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and snippets
   use "akinsho/toggleterm.nvim"
 
+  -- nvim trees and icons
+  use "kyazdani42/nvim-web-devicons"
+  use "kyazdani42/nvim-tree.lua"
+
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
@@ -124,6 +128,7 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- tmux
+  -- @todo does not work when nvim-tree is opened
   use { 'alexghergh/nvim-tmux-navigation', config = function()
     local nvim_tmux_nav = require('nvim-tmux-navigation')
     nvim_tmux_nav.setup {
