@@ -22,8 +22,9 @@
 --    vim.api.nvim_command(("e +BLines %s"):format(file))
 --end
 
+-- @todo don't know why this workspace
+-- probably just capture it on output
 local function set_qf_list(files)
-  -- don't know why this works
   for k, v in pairs(files) do
     print(k, v)
   end
@@ -41,9 +42,9 @@ local function set_qf_list(files)
 end
 
 vim.g.fzf_action = {
---    ['ctrl-t'] = 'tab split',
---    ['ctrl-x'] = 'split',
---    ['ctrl-v'] = 'vsplit',
+    ['ctrl-t'] = 'tab split',
+    ['ctrl-x'] = 'split',
+    ['ctrl-v'] = 'vsplit',
     ['alt-q']  = set_qf_list,
 --    ['@']      = goto_def,
 --    [':']      = goto_line,
