@@ -86,8 +86,16 @@ return packer.startup(function(use)
 
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
+  -- Telescope, Unfortunately it is too slow
+  -- use "nvim-telescope/telescope.nvim"
+  --use {
+  --  'nvim-telescope/telescope-fzf-native.nvim',
+  --  run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  --}
+
+  -- fzf. Unfortunately I think fzf is better
+  use { "junegunn/fzf", run = ":call fzf#install()" }
+  use { "junegunn/fzf.vim" }
 
   -- Treesitter
   use {

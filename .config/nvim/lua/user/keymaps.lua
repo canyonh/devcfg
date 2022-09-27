@@ -20,10 +20,10 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+--keymap("n", "<C-h>", "<C-w>h", opts)
+--keymap("n", "<C-j>", "<C-w>j", opts)
+--keymap("n", "<C-k>", "<C-w>k", opts)
+--keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- replaced by nvim-tree.lua
 -- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
@@ -40,8 +40,8 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+-- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+-- keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -49,8 +49,8 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+-- keymap("v", "<", "<gv", opts)
+-- keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
@@ -66,21 +66,24 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
-keymap("t", "<esc>", "<C-\\><C-N>", term_opts)
+
+-- disabled for fzf integration
+-- keymap("t", "<esc>", "<C-\\><C-N>", term_opts)
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+-- Telescope (too slow)
 -- keymap("n", "<c-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
--- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
--- keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
--- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<c-p>",
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-  opts)
-keymap("n", "<c-n>", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<c-n>", "<cmd>Telescope live_grep<cr>", opts)
+
+-- for fzf
+keymap("n", "<c-p>", "<cmd>Files<cr>", opts)
+keymap("n", "<c-n>", "<cmd>Rg<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>Files<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>Rg<cr>", opts)
+keymap("n", "<leader>fg", "<cmd>Gitfio<cr>", opts)
 
 -- DAP
 keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
