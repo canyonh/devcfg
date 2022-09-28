@@ -79,11 +79,24 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("n", "<c-n>", "<cmd>Telescope live_grep<cr>", opts)
 
 -- for fzf
-keymap("n", "<c-p>", "<cmd>Files<cr>", opts)
-keymap("n", "<c-n>", "<cmd>Rg<cr>", opts)
-keymap("n", "<leader>ff", "<cmd>Files<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>Rg<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Gitfio<cr>", opts)
+keymap("n", "<c-p>", "<cmd>lua require('fzf-lua').files()<cr>", opts)
+keymap("n", "<c-n>", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
+
+-- find files
+keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<cr>", opts)
+
+-- vcs files, commits branches
+keymap("n", "<leader>vf","<cmd>lua require('fzf-lua').git_files()<cr>", opts)
+keymap("n", "<leader>vc","<cmd>lua require('fzf-lua').git_commits()<cr>", opts)
+keymap("n", "<leader>vb","<cmd>lua require('fzf-lua').git_branches()<cr>", opts)
+
+-- grep live, grep buffer
+keymap("n", "<leader>gl", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
+keymap("n", "<leader>gb", "<cmd>lua require('fzf-lua').blines()<cr>", opts)
+
+-- wworksapce symbols, workspace diagnostics
+keymap("n", "<leader>ws", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<cr>", opts)
+keymap("n", "<leader>wd", "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<cr>", opts)
 
 -- DAP
 keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)

@@ -17,4 +17,4 @@ require "user.dap"
 require "user.nvim-tree"
 require "user.bufferline"
 
-vim.cmd "colorscheme tokyonight"
+vim.cmd "colorscheme tokyonight-moon"

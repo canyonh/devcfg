@@ -94,8 +94,9 @@ return packer.startup(function(use)
   --}
 
   -- fzf. Unfortunately I think fzf is better
-  use { "junegunn/fzf", run = ":call fzf#install()" }
-  use { "junegunn/fzf.vim" }
+  --- use { "junegunn/fzf", run = ":call fzf#install()" }
+  --- use { "junegunn/fzf.vim" }
+  use { 'ibhagwan/fzf-lua' }
 
   -- Treesitter
   use {
