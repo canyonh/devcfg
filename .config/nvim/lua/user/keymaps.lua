@@ -97,10 +97,15 @@ keymap("n", "<leader>vb", "<cmd>lua require('fzf-lua').git_branches()<cr>", opts
 -- grep live, grep buffer
 keymap("n", "<leader>gl", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
 keymap("n", "<leader>gb", "<cmd>lua require('fzf-lua').blines()<cr>", opts)
+keymap("n", "<leader>go", "<cmd>lua require('fzf-lua').buffers()<cr>", opts)
 
 -- wworksapce symbols, workspace diagnostics
 keymap("n", "<leader>ws", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<cr>", opts)
 keymap("n", "<leader>wd", "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<cr>", opts)
+
+-- document symbol and diagnostics
+keymap("n", "<leader>ds", "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", opts)
+keymap("n", "<leader>dd", "<cmd>lua require('fzf-lua').lsp_document_diagnostics()<cr>", opts)
 
 -- DAP
 keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)

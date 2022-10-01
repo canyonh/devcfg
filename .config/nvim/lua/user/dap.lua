@@ -2,6 +2,9 @@
 local venv_python_path = string.format("%s/bin/python", os.getenv("VIRTUAL_ENV"))
 require('dap-python').setup(venv_python_path)
 
+-- mason registry - get information about installed packages
+local mason_registry = require('mason-registry')
+
 -- DAP vscode-js-debug
 --
 require("dap-vscode-js").setup({
@@ -48,6 +51,63 @@ for _, language in ipairs({ "typescript", "javascript" }) do
     },
   }
 end
+
+-- DAP vscode cpptools
+local cpptools= mason_registry.get_package("cpptools")
+print(cpptools:get_install_path())
+
+local dap = require('dap')
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  -- command = '/home/kxhuan/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+  command = cpptools:get_install_path() .. '/extension/debugAdapters/bin/OpenDebugAD7'
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = 'cppdbg',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file' )
+    end,
+    cwd = '${workspaceFolder}',
+    stopAtEntry = true,
+    setupCommands = {
+      {
+        text = 'source ${workspaceFolder}/.gdbinit',
+        ignoreFailures = 'true',
+      },
+      {
+        text = '-enable-pretty-printing',
+        ignoreFailures = 'true',
+      }
+    }
+  },
+  {
+    name = 'Attach to gdbserver :1234',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    pid = require('dap.utils').pick_process,
+    args = {},
+    setupCommands = {
+      {
+        text = 'source ${workspaceFolder}/.gdbinit',
+        ignoreFailures = 'true',
+      },
+      {
+        text = '-enable-pretty-printing',
+        ignoreFailures = 'true',
+      }
+    }
+  }
+}
+
 
 -- DAP UI
 require("dapui").setup({
@@ -123,16 +183,16 @@ require("dapui").setup({
 })
 
 -- -- auto close and open dap ui
-local dap, dapui = require("dap"), require("dapui")
+local dapui =  require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--   dapui.close()
+-- end
 
 -- DAP virtual test
 require("nvim-dap-virtual-text").setup {
