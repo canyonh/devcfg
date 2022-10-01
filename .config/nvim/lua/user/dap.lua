@@ -54,7 +54,7 @@ end
 
 -- DAP vscode cpptools
 local cpptools= mason_registry.get_package("cpptools")
-print(cpptools:get_install_path())
+-- print(cpptools:get_install_path())
 
 local dap = require('dap')
 dap.adapters.cppdbg = {
@@ -187,12 +187,12 @@ local dapui =  require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited["dapui_config"] = function()
---   dapui.close()
--- end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
 
 -- DAP virtual test
 require("nvim-dap-virtual-text").setup {
