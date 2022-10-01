@@ -18,31 +18,26 @@
 -- vim.g.fzf_commands_expect = 'enter'
 -- vim.g.fzf_buffers_jump = 1          -- [Buffers] Jump to the existing window if possible
 
--- local actions = require "fzf-lua.actions"
-
--- require'fzf-lua'.setup {
---   keymap = {
---     builtin = {
---       ["<S-down>"] = "preview-page-down",
---       ["<S-up>"] = "preview-page-up",
---     },
---     fzf = {
---       ["ctrl-f"] = "half-page-down",
---       ["ctrl-b"] = "half-page-up",
---       ["alt-a"] = "toggle-all",
---       ["shift-down"] = "preview-page-down",
---       ["shift-up"] = "preview-page-up",
---     },
---     actions = {
---       files = {
---         ["default"] = actions.buf_edit,
---         ["ctrl-s"] = actions.buf_split,
---         ["ctrl-v"] = actions.buf_vsplit,
---       },
---     },
---     previewers = {
--- 
---     }
---   },
--- }
--- 
+local actions = require "fzf-lua.actions"
+require'fzf-lua'.setup {
+  keymap = {
+    builtin = {
+      ["<S-down>"] = "preview-page-down",
+      ["<S-up>"] = "preview-page-up",
+    },
+    fzf = {
+      ["ctrl-f"] = "half-page-down",
+      ["ctrl-b"] = "half-page-up",
+      ["alt-a"] = "toggle-all",
+      ["shift-down"] = "preview-page-down",
+      ["shift-up"] = "preview-page-up",
+    },
+    actions = {
+      files = {
+        ["default"] = actions.buf_edit,
+        ["ctrl-s"] = actions.buf_split,
+        ["ctrl-v"] = actions.buf_vsplit,
+      },
+    },
+  },
+}

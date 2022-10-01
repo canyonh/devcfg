@@ -65,6 +65,9 @@ return packer.startup(function(use)
   use "lunarvim/darkplus.nvim"
   use "EdenEast/nightfox.nvim"
   use "folke/tokyonight.nvim"
+  use "savq/melange"
+  use "sainnhe/sonokai"
+  use "sainnhe/everforest"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
