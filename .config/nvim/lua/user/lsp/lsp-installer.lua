@@ -50,15 +50,16 @@ mason_lspconfig.setup_handlers({
       local sumneko_opts = require("user.lsp.settings.sumneko_lua")
       opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
     end
-    -- if server_name == 'clangd' then
-    --   opts = {
-    --     cmd = {
-    --       'clangd',
-    --       -- '--background-index',
-    --       '--log=verbose',
-    --     }
-    --   }
-    -- end
+    -- uncomment this to get verbose log
+    --if server_name == 'clangd' then
+    --  opts = vim.tbl_deep_extend("force", {
+    --    cmd = {
+    --      'clangd',
+    --      -- '--background-index',
+    --      '--log=verbose',
+    --    }
+    --  }, opts)
+    --end
     require("lspconfig")[server_name].setup(opts)
   end
 })
