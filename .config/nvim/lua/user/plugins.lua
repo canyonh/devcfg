@@ -68,6 +68,7 @@ return packer.startup(function(use)
   use "savq/melange"
   use "sainnhe/sonokai"
   use "sainnhe/everforest"
+  use "ellisonleao/gruvbox.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin

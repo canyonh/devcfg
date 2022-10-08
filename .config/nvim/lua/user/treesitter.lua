@@ -14,7 +14,9 @@ configs.setup {
     additional_vim_regex_highlighting = false,
 
   },
-  indent = { enable = true, disable = { "yaml" } },
+  -- indent = { enable = true, disable = { "yaml" } },
+  -- indent is messing with c++ files
+  indent = { enable = false },
 
   rainbow = {
     enable = true,

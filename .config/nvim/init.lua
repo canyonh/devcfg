@@ -17,4 +17,6 @@ require "user.dap"
 require "user.nvim-tree"
 require "user.bufferline"
 
-vim.cmd "colorscheme sonokai"
+-- vim.cmd "colorscheme sonokai"
+vim.cmd "colorscheme tokyonight-moon"
+-- vim.cmd "colorscheme gruvbox"
