@@ -15,7 +15,8 @@ require("tokyonight").setup({
       add = "#005600", -- "#41a6b5",
       delete = "#c53b53",
       change = "#000490", -- "#394b70",
-      text  = "#be00b9"-- "#394b70"
+      text = "#0015FF"
+      --text  = "#be00b9"-- "#394b70"
     }
   end,
   -- on_highlights = function(highlights, colors)
