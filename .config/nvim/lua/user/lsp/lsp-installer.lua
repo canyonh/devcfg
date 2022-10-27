@@ -20,7 +20,8 @@ mason_lspconfig.setup({
     "pyright",
     "jsonls",
     "tsserver",
-    "prettierd"
+  -- does not seem to be supported anymore
+  --  "prettierd"
   },
 
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.

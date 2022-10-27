@@ -23,4 +23,4 @@ require("tokyonight").setup({
   -- end
 })
 
-vim.cmd([[:highlight debugPC term=reverse ctermbg=darkblue guibg=darkblue]])
+-- vim.cmd([[:highlight debugPC term=reverse ctermbg=darkblue guibg=darkblue]])
