@@ -6,7 +6,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 apt update
 
 # utility
-sudo apt install -y git python-is-python3 python3 python3-pip python3-venv openssh-server corkscrew ripgrep fd-find cppcheck fzf
+sudo apt install -y git python-is-python3 python3 python3-pip python3-venv openssh-server corkscrew ripgrep fd-find cppcheck fzf zsh
 
 # nvim
 sudo apt install -y neovim

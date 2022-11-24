@@ -87,3 +87,5 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 export PATH=$HOME/bin:/usr/local/bin:$PYTHON_BIN_PATH:$PATH:/sbin
 
+alias vim=nvim
+

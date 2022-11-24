@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
 # zsh
-sudo apt install -y zsh
+# moved to install-apt
+#sudo apt install -y zsh
 echo "export ZDOTDIR=$HOME/devcfg/.config/zsh" > ~/.zshenv
 
 if [ ! "$SHELL" == "/usr/bin/zsh" ]; then
