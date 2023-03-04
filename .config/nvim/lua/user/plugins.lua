@@ -12,10 +12,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   }
   print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
 end
 
+-- Termdebug has a bug that renders up or down a frame not working for neovim
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- Keep it for now while I'm still getting used to nvim-gdb
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -120,6 +121,11 @@ return packer.startup(function(use)
   }
 
   use {
+    "sakhnik/nvim-gdb",
+    run = "./install.sh"
+  }
+
+  use {
     "rcarriga/nvim-dap-ui",
     require = { "mfussenegger/nvim-dap" }
   }
@@ -159,6 +165,12 @@ return packer.startup(function(use)
     --      vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
   end
   }
+
+  -- @todo move to its own config
+  vim.cmd([[
+    let g:nvimgdb_use_find_executables = 0
+    let g:nvimgdb_use_cmake_to_find_executables = 0
+  ]])
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
