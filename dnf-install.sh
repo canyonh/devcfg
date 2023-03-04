@@ -9,10 +9,11 @@ sudo dnf install corkscrew fd-find fzf zsh chsh
 sudo systemctl start sshd
 
 # nvim
-sudo apt install -y neovim
+#sudo apt install -y neovim
+sudo dnf install neovim
 
 # build tools and nvim support
-sudo apt install -y build-essential gcc g++ cmake clang
+#sudo apt install -y build-essential gcc g++ cmake clang
 pip install pynvim
 npm i neovim:18
 
