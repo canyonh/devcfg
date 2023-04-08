@@ -1,5 +1,11 @@
 #!/bin/bash
-source ./apt-install.sh
+if [ -f /etc/fedora-release ]; then
+	echo "Feroda release detected"
+	source ./dnf-install.sh
+elif [ -f /etc/lsb-release ]; then
+	echo "Ubuntu release detected"
+	source ./apt-install.sh
+fi
 source ./install_nerd_fonts.sh
 source ./setup-neovim.sh
 source ./setup-tmux.sh
