@@ -58,7 +58,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 
 -- @todo is it useful?
-keymap("v", "p", '"_dP', opts)
+-- keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
