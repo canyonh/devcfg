@@ -2,12 +2,12 @@
 
 sudo dnf update
 sudo dnf install openssh-server
-sudo systemctl start sshd
-sudo dnf module install nodejs
+sudo systemctl enable sshd.service
+sudo systemctl restart sshd
 
 # utility
 sudo dnf install corkscrew fd-find fzf zsh chsh
-sudo systemctl start sshd
+sudo dnf module install nodejs
 
 # nvim
 sudo dnf install neovim
