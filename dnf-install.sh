@@ -14,7 +14,13 @@ sudo dnf install neovim
 # build tools and nvim support
 sudo dnf install cmake gcc clang
 pip install pynvim
-npm i neovim:18
+#npm i neovim:18
+npm i neovim
 
 # install black
 pip install black==22.6.0
+
+# install mold
+sudo dnf config-manager --add-repo https://mold-lang.github.io/fedora/mold-lang.repo
+sudo rpm --import https://mold-lang.github.io/fedora/mold-lang.pub
+sudo dnf install mold
