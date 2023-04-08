@@ -6,7 +6,7 @@ sudo systemctl enable sshd.service
 sudo systemctl restart sshd
 
 # utility
-sudo dnf install corkscrew fd-find fzf zsh chsh
+sudo dnf install corkscrew fd-find fzf zsh chsh python3-pip
 sudo dnf module install nodejs
 
 # nvim
