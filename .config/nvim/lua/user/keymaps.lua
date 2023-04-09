@@ -69,7 +69,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation for termdebug 
-function _G.set_termdebug_keymaps()
+function _G.set_gdb_termdebug_keymaps()
   keymap("t", "<esc>", "<C-\\><C-N>", term_opts)
   keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
   keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
@@ -77,7 +77,7 @@ function _G.set_termdebug_keymaps()
   keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
   vim.cmd [[highlight debugPC term=reverse ctermbg=darkblue guibg=darkblue]]
 end
-vim.cmd('autocmd! TermOpen term://*gdb* lua set_termdebug_keymaps()')
+vim.cmd('autocmd! TermOpen term://*gdb* lua set_gdb_termdebug_keymaps()')
 
 -- Telescope (too slow)
 -- keymap("n", "<c-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
