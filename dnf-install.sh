@@ -5,7 +5,10 @@ sudo dnf install openssh-server
 sudo systemctl enable sshd.service
 sudo systemctl restart sshd
 
-sudo dnf install corkscrew fd-find fzf zsh python3-pip util-linux-user
+# fzf has a bug in fedora which tab completion does not work. use git install script for now
+#sudo dnf install corkscrew fd-find fzf zsh python3-pip util-linux-user
+sudo dnf install corkscrew fd-find zsh python3-pip util-linux-user
+git clone --depth 1 https://github.com/junegunn/fzf.git && ~/.fzf ~/.fzf/install
 sudo dnf module install nodejs
 
 # nvim
