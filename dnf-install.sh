@@ -1,4 +1,4 @@
-#!/bin/bash -x
+/bin/bash -x
 
 sudo dnf update
 sudo dnf install openssh-server
@@ -9,7 +9,9 @@ sudo systemctl restart sshd
 #sudo dnf install corkscrew fd-find fzf zsh python3-pip util-linux-user
 sudo dnf install corkscrew fd-find zsh python3-pip util-linux-user ripgrep
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-sudo dnf module install nodejs
+sudo dnf module install nodejs 
+
+sudo dnf install npm
 
 # nvim
 sudo dnf install neovim
