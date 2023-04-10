@@ -1,6 +1,8 @@
 #!/bin/bash -x
 
 # update repo and packages, included nodejs is too old for neovim
+sudo apt update -y
+sudo apt install curl
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_18.x | bash -"
 sudo add-apt-repository ppa:neovim-ppa/unstable
 apt update
