@@ -15,4 +15,12 @@ elif [ -f /etc/lsb-release ]; then
 	source ./setup-tmux.sh
 	source ./install-mold.sh
 	source ./install-zsh.sh
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	echo "MacOsx release detected"
+	source ./homebrew-install.sh
+	source ./setup-neovim.sh
+	source ./setup-tmux.sh
+	# tbd don't know if we are going to need it
+	#source ./install-mold.sh
+	source ./install-zsh.sh
 fi
