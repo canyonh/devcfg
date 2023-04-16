@@ -1,3 +1,4 @@
+#!/bin/bash -x
 mkdir -p ~/.local/share/fonts
 
 pushd .

@@ -1,4 +1,4 @@
-/bin/bash -x
+#!/bin/bash -x
 
 sudo dnf update
 sudo dnf install openssh-server
