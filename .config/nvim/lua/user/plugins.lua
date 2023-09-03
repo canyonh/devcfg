@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Add trerm debug and setting its layout
 vim.cmd "packadd termdebug"
 vim.g["termdebug_wide"] = 163
