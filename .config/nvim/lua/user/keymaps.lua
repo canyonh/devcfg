@@ -39,6 +39,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+
 -- Move text up and down
 -- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 -- keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
@@ -91,16 +92,16 @@ keymap("n", "<c-n>", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<cr>", opts)
 
 -- vcs files, commits branches
-keymap("n", "<leader>vf", "<cmd>lua require('fzf-lua').git_files()<cr>", opts)
-keymap("n", "<leader>vc", "<cmd>lua require('fzf-lua').git_commits()<cr>", opts)
-keymap("n", "<leader>vb", "<cmd>lua require('fzf-lua').git_branches()<cr>", opts)
+-- keymap("n", "<leader>vf", "<cmd>lua require('fzf-lua').git_files()<cr>", opts)
+-- keymap("n", "<leader>vc", "<cmd>lua require('fzf-lua').git_commits()<cr>", opts)
+-- keymap("n", "<leader>vb", "<cmd>lua require('fzf-lua').git_branches()<cr>", opts)
 
 -- grep live, grep buffer
 keymap("n", "<leader>gl", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
 keymap("n", "<leader>gb", "<cmd>lua require('fzf-lua').blines()<cr>", opts)
 keymap("n", "<leader>go", "<cmd>lua require('fzf-lua').buffers()<cr>", opts)
 
--- wworksapce symbols, workspace diagnostics
+-- worksapce symbols, workspace diagnostics
 keymap("n", "<leader>ws", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<cr>", opts)
 keymap("n", "<leader>wd", "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<cr>", opts)
 
