@@ -64,10 +64,18 @@ bindkey -r "^d"
 
 # FZF 
 # TODO update for mac
+# ubuntu
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
+# fedora
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+# homebrew
+[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source   /opt/homebrew/opt/fzf/shell/completion.zsh
+[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
@@ -85,7 +93,10 @@ export BROWSER="brave"
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-export PATH=$HOME/bin:/usr/local/bin:$PYTHON_BIN_PATH:$PATH:/sbin
+# @todo there are some macos paths
+export PATH=$HOME/bin:/usr/local/bin:$PYTHON_BIN_PATH:$PATH:/sbin:/opt/homebrew/bin:/Users/kxhuan/Library/Python/3.9/bin:/opt/homebrew/opt/openjdk/bin
+
+# @todo enable jdk for C++
+#export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 alias vim=nvim
-

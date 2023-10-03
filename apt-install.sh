@@ -4,7 +4,7 @@
 sudo apt update -y
 sudo apt install curl
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_18.x | bash -"
-sudo add-apt-repository ppa:neovim-ppa/stable
+sudo add-apt-repository ppa:neovim-ppa/unstable
 apt update
 
 # utility
