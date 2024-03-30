@@ -17,12 +17,12 @@ sudo apt install -y neovim
 sudo apt install -y tmux
 
 # build tools and nvim support
-sudo apt install -y build-essential gcc g++ cmake clang libclang-dev nodejs npm
+sudo apt install -y build-essential gcc g++ cmake clang libclang-dev nodejs npm mold
 pip install pynvim
 npm i neovim
 
 # install black
-pip install black==22.6.0
+pip install black
 
 # install pipenv via python. apt has wrong version which does not work with the others
 pip install pipenv

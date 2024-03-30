@@ -13,7 +13,7 @@ elif [ -f /etc/lsb-release ]; then
 	source ./install_nerd_fonts.sh
 	source ./setup-neovim.sh
 	source ./setup-tmux.sh
-	source ./install-mold.sh
+	#source ./install-mold.sh
 	source ./install-zsh.sh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	echo "MacOsx release detected"
