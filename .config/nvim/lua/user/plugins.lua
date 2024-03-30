@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- My plugins here
+  "nvim-neotest/nvim-nio", -- async io library for neo vim
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and snippets
