@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-ferror-limit=0]
+  Add: [-ferror-limit=0, -std=c++20, --pretty, --header-insertion=iwyu, --background-index, -j=32, --pch-storage=memory]
 Diagnostics:
   Suppress: [ovl_no_viable_function_in_call]
 
