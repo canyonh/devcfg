@@ -1,7 +1,58 @@
 CompileFlags:
-  Add: [-ferror-limit=0, -std=c++20, --pretty, --header-insertion=iwyu, --background-index, -j=32, --pch-storage=memory]
+  Add: [-ferror-limit=0, -std=c++20]
+#Diagnostics:
+#  Suppress: [ovl_no_viable_function_in_call]
+# Use an in-memory file system for the cache
+#Cache:
+#  Directory: /dev/shm/clangd_cache  # Use /dev/shm on Linux, or /tmp on macOS
+#  Compression: gzip
+#  HierarchicalPrefixMapLevel: 2
+
+# Use all available CPU cores for indexing jobs
+Jobs: 0  # 0 means use all available cores
+
+# Limit the number of results returned by clangd
+Limit:
+  ResultsLimit: 100  # Adjust as needed
+
+# Use delayed completion style for faster responsiveness
+CompletionStyle: delayed
+
+# Enable background indexing
+Index:
+  Background:
+    build: true
+    shardedIndex: true  # Enable sharded indexing for better parallelization
+
+# Enable header insertion suggestions
+HeaderInsertionDecorators:
+  Enabled: true
+
+# Enable pretty output formatting
+Pretty: true
+
+# Store PCH files in memory for maximum performance
+PchMemoryBackend: true
+
+# Exclude files and directories you don't need
+ExcludedFiles:
+  - path/to/file1.cpp
+  - path/to/file2.h
+ExcludedDirectories:
+  - path/to/directory1
+  - path/to/directory2
+  - build/  # Exclude build directories
+
+# Customize other options as needed
+Fallback:
+  Dialect: cpp2a  # Use the latest C++ dialect
+Index:
+  ThreadsDiagnostic: 8  # Number of threads for diagnostics
+  ThreadsReferences: 8  # Number of threads for references
+
+# Disable features you don't need
 Diagnostics:
-  Suppress: [ovl_no_viable_function_in_call]
-
-
-
+  Disabled:
+    - unhandled-exception-semantics  # Disable checks you don't need
+Formatting:
+  Disabled: true  # Disable formatting if you use an external formatter
