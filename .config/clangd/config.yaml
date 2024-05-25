@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-ferror-limit=0, -std=c++20]
+  Add: [-ferror-limit=0, -std=c++23]
 #Diagnostics:
 #  Suppress: [ovl_no_viable_function_in_call]
 # Use an in-memory file system for the cache
