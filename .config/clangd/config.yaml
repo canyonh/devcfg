@@ -1,5 +1,16 @@
 CompileFlags:
   Add: [-ferror-limit=0, -std=c++23]
+
+#If:
+#  PathMatch: ['*\.c$']
+#CompileFlags:
+#  Add: [-std=c11]
+#
+#If:
+#  PathMatch: ['*\.(cpp|cc|cxx|h|hpp)$']
+#CompileFlags:
+#  Add: [-std=c++23]
+
 #Diagnostics:
 #  Suppress: [ovl_no_viable_function_in_call]
 # Use an in-memory file system for the cache
@@ -35,20 +46,20 @@ Pretty: true
 PchMemoryBackend: true
 
 # Exclude files and directories you don't need
-ExcludedFiles:
-  - path/to/file1.cpp
-  - path/to/file2.h
-ExcludedDirectories:
-  - path/to/directory1
-  - path/to/directory2
-  - build/  # Exclude build directories
+#ExcludedFiles:
+#  - path/to/file1.cpp
+#  - path/to/file2.h
+#ExcludedDirectories:
+#  - path/to/directory1
+#  - path/to/directory2
+#  - build/  # Exclude build directories
 
 # Customize other options as needed
 Fallback:
   Dialect: cpp2a  # Use the latest C++ dialect
 Index:
-  ThreadsDiagnostic: 8  # Number of threads for diagnostics
-  ThreadsReferences: 8  # Number of threads for references
+  ThreadsDiagnostic: 12  # Number of threads for diagnostics
+  ThreadsReferences: 12  # Number of threads for references
 
 # Disable features you don't need
 Diagnostics:

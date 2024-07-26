@@ -80,38 +80,46 @@ require("lazy").setup({
 
   "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 
-  { 'ibhagwan/fzf-lua' },
+  {
+    'ibhagwan/fzf-lua',
+    dependencies = { "nvim-tree/nvim-web-devicons"},
+    config = function()
+      require("fzf-lua").setup({})
+    end
+  },
 
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
-  "p00f/nvim-ts-rainbow",
-  "nvim-treesitter/playground",
+  -- deprecated
+  -- "p00f/nvim-ts-rainbow",
+  -- "nvim-treesitter/playground",
 
   -- DAP
-  "mfussenegger/nvim-dap",
-  {
-    -- Install parser for treee-sitter python
-    "mfussenegger/nvim-dap-python",
-    build = ":TSInstall python",
-    dependencies= { "mfussenegger/nvim-dap" }
-  },
+  --"mfussenegger/nvim-dap",
+  --{
+  --  -- Install parser for treee-sitter python
+  --  "mfussenegger/nvim-dap-python",
+  --  build = ":TSInstall python",
+  --  dependencies= { "mfussenegger/nvim-dap" }
+  --},
 
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap" }
-  },
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    dependencies = { "mfussenegger/nvim-dap" }
-  },
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   dependencies = { "mfussenegger/nvim-dap" }
+  -- },
+  --
+  -- {
+  --   "theHamsta/nvim-dap-virtual-text",
+  --   dependencies = { "mfussenegger/nvim-dap" }
+  -- },
 
-  {
-    "mxsdev/nvim-dap-vscode-js",
-    dependencies = { "mfussenegger/nvim-dap" }
-  },
+  -- {
+  --   "mxsdev/nvim-dap-vscode-js",
+  --   dependencies = { "mfussenegger/nvim-dap" }
+  -- },
   -- git
   "lewis6991/gitsigns.nvim",
 
