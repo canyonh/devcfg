@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.cmd "packadd termdebug"
 vim.g["termdebug_wide"] = 163
 
-
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -69,8 +68,8 @@ require("lazy").setup({
   "hrsh7th/cmp-nvim-lsp",
 
   -- snippets
-  "L3MON4D3/LuaSnip", --snippet engine
-  "rafamadriz/friendly-snippets", -- a bunch of snippets to use
+  -- "L3MON4D3/LuaSnip", --snippet engine
+  -- "rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
   -- LSP
   -- Note the following 3 plug-ins need to be in this order
