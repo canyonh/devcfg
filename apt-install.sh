@@ -18,11 +18,11 @@ sudo apt install -y tmux
 
 # build tools and nvim support
 sudo apt install -y build-essential gcc g++ cmake clang libclang-dev nodejs mold
-pip install pynvim
+pip install --user pynvim
 npm i neovim
 
 # install black
-pip install black
+pip install --user black
 
 # install pipenv via python. apt has wrong version which does not work with the others
-pip install pipenv
+pip install --user pipenv
