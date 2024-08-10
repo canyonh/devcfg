@@ -19,7 +19,8 @@ require('nvim-dap-virtual-text').setup()
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
   controls = {
-    enabled = true,
+    --enabled = true,
+    enabled = false,
     -- Display controls in this element
     element = "repl",
     icons = {
