@@ -6,8 +6,8 @@ sudo apt install -y curl
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -"
 sudo apt update -y
 sudo apt install nodejs -y
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo add-apt-repository ppa:aslatter/ppa
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo add-apt-repository -y ppa:aslatter/ppa
 sudo apt update -y
 
 # install tools
