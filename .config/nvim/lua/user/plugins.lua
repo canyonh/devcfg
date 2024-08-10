@@ -97,9 +97,10 @@ require("lazy").setup({
   -- "nvim-treesitter/playground",
 
   --DAP debugger 
-  { 'mfussenegger/nvim-dap',
+  {
+    "mfussenegger/nvim-dap",
     dependencies = {
-      "mfussengger/nvim-dap-python",
+      "mfussenegger/nvim-dap-python",
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
