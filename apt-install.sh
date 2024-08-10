@@ -4,14 +4,14 @@
 sudo apt update -y 
 sudo apt install -y curl
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -"
-#sudo apt update -y
-#sudo apt install nodejs -y
+sudo apt update -y
+sudo apt install nodejs -y
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo add-apt-repository ppa:aslatter/ppa
 sudo apt update -y
 
 # install tools
-sudo apt install -y alacritty
+sudo apt install -y curl alacritty
 
 # set alacrity as default terminal
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
