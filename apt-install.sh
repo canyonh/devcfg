@@ -28,6 +28,7 @@ sudo apt install -y build-essential gcc g++ cmake clang libclang-dev nodejs mold
 
 #pip install --user pynvim
 sudo apt install -y python3-pynvim
+sudo apt install -y python3-debugpy
 npm i neovim
 
 # install black
