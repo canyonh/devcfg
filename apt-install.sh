@@ -1,14 +1,16 @@
 #!/bin/bash -x
 
 # update repo and packages, included nodejs is too old for neovim
+sudo apt update -y 
+sudo apt install -y curl
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -"
-sudo apt install nodejs -y
+#sudo apt update -y
+#sudo apt install nodejs -y
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo add-apt-repository ppa:aslatter/ppa
 sudo apt update -y
 
 # install tools
-sudo apt install -y curl
 sudo apt install -y alacritty
 
 # set alacrity as default terminal
