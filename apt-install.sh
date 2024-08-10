@@ -2,8 +2,8 @@
 
 # update repo and packages, included nodejs is too old for neovim
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -"
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo add-apt-repository ppa:aslatter/ppa
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo add-apt-repository -y ppa:aslatter/ppa
 sudo apt update -y
 
 # install tools
@@ -29,7 +29,7 @@ sudo apt install -y build-essential gcc g++ cmake clang libclang-dev nodejs mold
 #pip install --user pynvim
 sudo apt install -y python3-pynvim
 sudo apt install -y python3-debugpy
-npm i neovim
+npm install neovim
 
 # install black
 #pip install --user black
