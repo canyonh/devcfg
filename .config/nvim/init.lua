@@ -15,7 +15,7 @@ require "user.autopairs"
 require "user.toggleterm"
 require "user.dap"
 -- require "user.nvim-tree"
-require "user.bufferline"
+-- require "user.bufferline"
 
 -- vim.cmd "colorscheme sonokai"
 vim.cmd "colorscheme tokyonight-moon"

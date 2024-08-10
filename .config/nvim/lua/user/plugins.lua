@@ -97,13 +97,31 @@ require("lazy").setup({
   -- "nvim-treesitter/playground",
 
   -- DAP
-  --"mfussenegger/nvim-dap",
-  --{
-  --  -- Install parser for treee-sitter python
-  --  "mfussenegger/nvim-dap-python",
-  --  build = ":TSInstall python",
-  --  dependencies= { "mfussenegger/nvim-dap" }
-  --},
+ --DAP debugger 
+  { 'mfussenegger/nvim-dap',
+    dependencies = {
+      "mfussengger/nvim-dap-python",
+      -- "rcarriga/nvim-dap-ui",
+      -- "theHamsta/nvim-dap-virtual-text",
+      -- "williamboman/mason.nvim"
+    }
+  },
+  { "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    }
+  },
+  -- debugger end
+
+  -- old
+  -- "mfussenegger/nvim-dap",
+  -- {
+  --   -- Install parser for treee-sitter python
+  --   "mfussenegger/nvim-dap-python",
+  --   build = ":TSInstall python",
+  --   dependencies= { "mfussenegger/nvim-dap" }
+  -- },
 
   -- {
   --   "rcarriga/nvim-dap-ui",
