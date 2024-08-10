@@ -113,12 +113,12 @@ keymap("n", "<leader>dd", "<cmd>lua require('fzf-lua').lsp_document_diagnostics(
 keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opts)
 keymap("n", "<F6>", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-
 keymap("n", "<F10>", "<cmd>lua require'dap'.step_over()<cr>", opts)
 keymap("n", "<F11>", "<cmd>lua require'dap'.step_into()<cr>", opts)
 keymap("n", "<F12>", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<F6>", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<F7>", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
+
+-- keymap("n", "<F6>", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+-- keymap("n", "<F7>", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 
 -- todo make a command
 -- remove all non-printable char %s/[^[:print:]]//g

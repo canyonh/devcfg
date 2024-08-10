@@ -8,3 +8,9 @@ unzip -j Hack.zip
 rm Hack-v3.003-ttf.zip
 fc-cache -f -v
 popd
+
+pushd .
+mkdir -p ~/.config/alacritty
+cd ~/.config/alacritty
+ln -s ~/devcfg/.config/alacritty/alacritty.yml
+popd

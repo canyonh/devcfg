@@ -1,9 +1,60 @@
 -- DAP_PYTHON
 -- require('dap-python').setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
-require('dap-python').setup()
-require('dapui').setup()
--- require('nvim-dap-virtual-text').setup()
+local dap = require('dap')
+local dapui = require('dapui')
 
+require('dap-python').setup("python")
+require('nvim-dap-virtual-text').setup()
+
+-- dap.listeners.after.event_initialized["dapui_config"] = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--   dapui.close()
+-- end
+
+dapui.setup({
+  icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
+  controls = {
+    enabled = true,
+    -- Display controls in this element
+    element = "repl",
+    icons = {
+      pause = "",
+      play = "",
+      step_into = "",
+      step_over = "",
+      step_out = "",
+      step_back = "",
+      run_last = "↻",
+      terminate = "□",
+    },
+  },
+  floating = {
+    max_height = nil, -- These can be integers or a float between 0 and 1.
+    max_width = nil, -- Floats will be treated as percentage of your screen.
+    border = "single", -- Border style. Can be "single", "double" or "rounded"
+    mappings = {
+      close = { "q", "<Esc>" },
+    },
+  },
+})
+
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
 -- local venv_python_path = string.format("%s/bin/python", os.getenv("VIRTUAL_ENV"))
 -- require('dap-python').setup(venv_python_path)
 -- mason registry - get information about installed packages
