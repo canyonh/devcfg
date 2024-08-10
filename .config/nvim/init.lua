@@ -13,7 +13,7 @@ require "user.treesitter"
 require "user.autopairs"
 -- require "user.gitsigns"
 require "user.toggleterm"
-require "user.dap"
+-- require "user.dap"
 -- require "user.nvim-tree"
 -- require "user.bufferline"
 

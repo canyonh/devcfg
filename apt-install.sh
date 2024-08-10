@@ -2,13 +2,14 @@
 
 # update repo and packages, included nodejs is too old for neovim
 sudo sh -c "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -"
-sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo add-apt-repository -y ppa:aslatter/ppa
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository ppa:aslatter/ppa
 sudo apt update -y
+sudo apt-get install nodejs -y
 
 # install tools
-sudo apt install curl
-sudo apt install alacritty
+sudo apt install -y curl
+sudo apt install -y alacritty
 
 # set alacrity as default terminal
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
@@ -24,7 +25,7 @@ sudo apt install -y neovim
 sudo apt install -y tmux
 
 # build tools and nvim support
-sudo apt install -y build-essential gcc g++ cmake clang libclang-dev nodejs mold
+sudo apt install -y build-essential gcc g++ cmake clang libclang-dev mold
 
 #pip install --user pynvim
 sudo apt install -y python3-pynvim

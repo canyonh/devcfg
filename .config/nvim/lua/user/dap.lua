@@ -1,7 +1,7 @@
 -- DAP_PYTHON
 -- require('dap-python').setup(os.getenv("VIRTUAL_ENV") .. "/bin/python")
+require('dap-python').setup()
 require('dapui').setup()
-require('dap-python').setup('/bin/python')
 -- require('nvim-dap-virtual-text').setup()
 
 -- local venv_python_path = string.format("%s/bin/python", os.getenv("VIRTUAL_ENV"))
