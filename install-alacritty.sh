@@ -1,7 +1,7 @@
 sudo add-apt-repository ppa:aslatter/ppa
 sudo apt update
 sudo apt install alacritty
-#ln -s $HOME/devcfg/.config/alacritty $/HOME/.config/alacritty
+ln -s ${HOME}/devcfg/.config/alacritty ${HOME}/.config
 
 # to remove
 # sudo apt remove --auto-remove alacritty
