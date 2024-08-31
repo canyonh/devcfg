@@ -21,7 +21,7 @@ sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
 sudo apt install -y git python-is-python3 python3 python3-pip python3-venv software-properties-common openssh-server corkscrew ripgrep fd-find cppcheck fzf zsh
 
 # nvim
-sudo apt install -y neovim
+# sudo apt install -y neovim
 
 # tmux
 sudo apt install -y tmux
@@ -31,8 +31,15 @@ sudo apt install -y build-essential gcc g++ cmake clang libclang-dev mold
 
 #pip install --user pynvim
 sudo apt install -y python3-pynvim
-sudo apt install -y python3-debugpy
+
+# failed -> check why
+#sudo apt install -y python3-debugpy
 npm install neovim
 
 # install black
 #pip install --user black
+
+# disable caps lock
+xmodmap -e "keycode 66 ="
+
+
