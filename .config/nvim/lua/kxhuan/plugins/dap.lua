@@ -4,32 +4,19 @@ return {
     "mfussenegger/nvim-dap",
     "theHamsta/nvim-dap-virtual-text",
     "nvim-neotest/nvim-nio",
-    "mfussenegger/nvim-dap-python",
+    --"mfussenegger/nvim-dap-python",
   },
   config = function()
     local dap = require("dap")
+     -- local dap_python = require("dap-python")
     local dapui = require("dapui")
-    local dap_python = require("dap-python")
     local dap_virtual_text = require("nvim-dap-virtual-text")
 
-    dap_python.setup()
     dapui.setup({
       icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
       controls = {
         --enabled = true,
         enabled = false,
-        -- Display controls in this element
-        element = "repl",
-        icons = {
-          pause = "",
-          play = "",
-          step_into = "",
-          step_over = "",
-          step_out = "",
-          step_back = "",
-          run_last = "↻",
-          terminate = "X",
-        },
       },
       floating = {
         max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -110,40 +97,62 @@ return {
       args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
     }
 
+    dap.adapters.python = {
+      type = "executable";
+      command = 'python3';
+      args = { '-m', 'debugpy.adapter' };
+    }
+
+    dap.configurations.python= {
+      {
+        name= "Pytest: Current File",
+        type= "python",
+        request= "launch",
+        module= "pytest",
+        args= {
+          "${file}",
+          "-sv",
+          "--log-cli-level=INFO",
+          "--log-file=test_out.log"
+        },
+        console= "integratedTerminal",
+      }
+    }
+
     dap.configurations.cpp = {
-    {
-      name = "Launch",
-      type = "gdb",
-      request = "launch",
-      program = function()
-        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-      end,
-      cwd = "${workspaceFolder}",
-      stopAtBeginningOfMainSubprogram = false,
-    },
-    {
-      name = "Select and attach to process",
-      type = "gdb",
-      request = "attach",
-      program = function()
-         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-      end,
-      pid = function()
-         local name = vim.fn.input('Executable name (filter): ')
-         return require("dap.utils").pick_process({ filter = name })
-      end,
-      cwd = '${workspaceFolder}'
-    },
-    {
-      name = 'Attach to gdbserver :1234',
-      type = 'gdb',
-      request = 'attach',
-      target = 'localhost:1234',
-      program = function()
-         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-      end,
-      cwd = '${workspaceFolder}'
-    },
-  }
+      {
+        name = "Launch",
+        type = "gdb",
+        request = "launch",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = "${workspaceFolder}",
+        stopAtBeginningOfMainSubprogram = false,
+      },
+      {
+        name = "Select and attach to process",
+        type = "gdb",
+        request = "attach",
+        program = function()
+           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        pid = function()
+           local name = vim.fn.input('Executable name (filter): ')
+           return require("dap.utils").pick_process({ filter = name })
+        end,
+        cwd = '${workspaceFolder}'
+      },
+      {
+        name = 'Attach to gdbserver :1234',
+        type = 'gdb',
+        request = 'attach',
+        target = 'localhost:1234',
+        program = function()
+           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}'
+      },
+    }
   end
 }

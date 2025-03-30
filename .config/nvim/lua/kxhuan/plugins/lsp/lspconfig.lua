@@ -21,7 +21,7 @@ return {
 
         -- keybinds
         opts.desc = "Show LSP references"
-        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+        keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 
         opts.desc = "Go to declaration"
         keymap.set("n", "gD", vim.lsp.buf.declaration, opts)

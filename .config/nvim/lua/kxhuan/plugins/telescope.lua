@@ -25,8 +25,6 @@ return {
 
     telescope.load_extension("fzf")
     local keymap = vim.keymap
-
-    local keymap = vim.keymap 
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>", { desc = "Fnd string in cwd" })
