@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-ferror-limit=0, -std=c++23]
+  Add: [-ferror-limit=0, -std=c++17]
 
 #If:
 #  PathMatch: ['*\.c$']
