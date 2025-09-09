@@ -1,6 +1,12 @@
 CompileFlags:
-  Add: [-ferror-limit=0, -std=c++17]
+#  Add: [-ferror-limit=0, -std=c++17]
+  Add: [-ferror-limit=0]
 
+# Add different flags for C++ files
+If:
+  PathMatch: ['.*\\.(cpp|cc|cxx|h|hpp)$']
+CompileFlags:
+  Add: [-std=c++23]
 #If:
 #  PathMatch: ['*\.c$']
 #CompileFlags:

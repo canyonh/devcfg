@@ -25,20 +25,6 @@ return {
             },
           },
         },
-        -- icons = {
-        --   glyuphs = {
-        --     folder = {
-        --       arrow_closed = "
-        --     }
-        --   }
-        -- },
-        -- icons = {
-        --   glyuphs = {
-        --     folder = {
-        --       arrow_closed = "
-        --     }
-        --   }
-        -- },
       },
       actions = {
         open_file = {
