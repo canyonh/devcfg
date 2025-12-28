@@ -55,20 +55,25 @@ return {
         virt_text_win_col = nil                -- position the virtual text at a fixed window column (starting from the first text column) ,
     })
 
-    dap.listeners.before.attach.dapui_config = function()
+    dap.listeners.before.attach.dapui_config = function(session, body)
       dapui.open()
     end
 
-    dap.listeners.before.launch.dapui_config = function()
+    dap.listeners.before.launch.dapui_config = function(session, body)
       dapui.open()
     end
 
-    dap.listeners.before.event_terminated.dapui_config = function()
+    dap.listeners.before.event_terminated.dapui_config = function(session, body)
       dapui.close()
     end
 
-    dap.listeners.before.event_exited.dapui_config = function()
+    dap.listeners.before.event_exited.dapui_config = function(session, body)
       dapui.close()
+    end
+
+    -- Suppress debugpySockets warnings (these are informational events we don't need)
+    dap.listeners.before.event_debugpySockets.dapui_config = function(session, body)
+      -- Silently ignore this event
     end
 
     -- Define custom signs for nvim-dap
@@ -97,11 +102,20 @@ return {
       args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
     }
 
-    dap.adapters.python = {
-      type = "executable";
-      command = 'python3';
-      args = { '-m', 'debugpy.adapter' };
-    }
+    dap.adapters.python = function(callback, config)
+      local python_path = vim.env.VIRTUAL_ENV and (vim.env.VIRTUAL_ENV .. '/bin/python3') or 'python3'
+      callback({
+        type = 'executable',
+        command = python_path,
+        args = { '-m', 'debugpy.adapter' },
+      })
+    end
+
+    -- Determine Python path once at config time
+    local python_path = 'python3'
+    if vim.env.VIRTUAL_ENV then
+      python_path = vim.env.VIRTUAL_ENV .. '/bin/python3'
+    end
 
     dap.configurations.python= {
       {
@@ -109,13 +123,23 @@ return {
         type= "python",
         request= "launch",
         module= "pytest",
-        args= {
-          "${file}",
-          "-sv",
-          "--log-cli-level=INFO",
-          "--log-file=test_out.log"
+        args= function()
+          return {
+            vim.fn.expand('%:p'),  -- Full path to current file
+            "-sv",
+            "--log-cli-level=INFO",
+            "--log-file=test_out.log"
+          }
+        end,
+        console= "integratedTerminal",  -- Use integrated terminal for better output visibility
+        justMyCode= false,               -- Allow debugging into library code
+        cwd= "${workspaceFolder}",       -- Run from project root
+        stopOnEntry= false,
+        pythonPath= python_path,         -- Use virtualenv Python (evaluated at config load)
+        env= {
+          PYTHONPATH = vim.env.PYTHONPATH,  -- Critical: Pass PYTHONPATH so pytest finds modules
+          VIRTUAL_ENV = vim.env.VIRTUAL_ENV,
         },
-        console= "integratedTerminal",
       }
     }
 
@@ -154,5 +178,34 @@ return {
         cwd = '${workspaceFolder}'
       },
     }
+
+    -- Auto-load project-specific DAP configurations
+    -- Try to load VSCode launch.json files if they exist
+    local function try_load_vscode_launch()
+      local paths = {
+        vim.fn.getcwd() .. '/.vscode/launch.json',
+        vim.fn.getcwd() .. '/.vscode_shared/launch.json',
+      }
+
+      for _, path in ipairs(paths) do
+        if vim.fn.filereadable(path) == 1 then
+          -- Use pcall to safely attempt loading, may fail for complex configs
+          local ok, err = pcall(require('dap.ext.vscode').load_launchjson, path)
+          if ok then
+            vim.notify("Loaded DAP configurations from " .. vim.fn.fnamemodify(path, ':~:.'), vim.log.levels.INFO)
+          else
+            -- Silently fail - VSCode configs may have unsupported features
+            -- Users can create .nvim.lua for complex scenarios
+          end
+          return true
+        end
+      end
+      return false
+    end
+
+    -- Defer loading to ensure all adapters are registered
+    vim.defer_fn(function()
+      try_load_vscode_launch()
+    end, 100)
   end
 }

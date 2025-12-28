@@ -1,49 +1,37 @@
+-- Treesitter is managed by lazy.nvim
+-- NOTE: nvim-treesitter was completely rewritten - new API uses Neovim built-in features
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
-  build = ":TSUpdate",
+  build = ":TSUpdate",  -- Auto-update parsers on plugin update
+  lazy = false,  -- Load immediately (before other plugins need it)
+  priority = 100,  -- Load early but after colorscheme
   dependencies = {
     "windwp/nvim-ts-autotag",
   },
   config = function()
-    -- import nvim-treesitter plugin
-    local treesitter = require("nvim-treesitter.configs")
+    -- Install parsers (new API)
+    require('nvim-treesitter').install({
+      "c",
+      "cpp",
+      "json",
+      "cmake",
+      "bash",
+      "lua",
+      "dockerfile",
+      "vim",
+      "vimdoc",
+      "python",
+    })
 
-    -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
-      highlight = {
-        enable = true,
-      },
-
-      -- enable identation
-      indent = { enable = true },
-
-      -- enable autotagging (w/ nvim-ts-auditag plugin)
-      autotag = {
-        enable = true,
-      },
-
-      -- ensure these language parsers are installed
-      ensure_installed = {
-        "c",
-        "cpp",
-        "json",
-        "cmake",
-        "bash",
-        "lua",
-        "dockerfile",
-        "vimdoc",
-        "python",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
+    -- Enable treesitter highlighting for all filetypes (replaces old highlight.enable)
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = '*',
+      callback = function()
+        local ok = pcall(vim.treesitter.start)
+        if not ok then
+          -- Silently ignore files without treesitter support
+        end
+      end,
     })
   end,
 }

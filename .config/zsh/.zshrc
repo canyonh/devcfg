@@ -100,3 +100,5 @@ export PATH=$HOME/bin:/usr/local/bin:$PYTHON_BIN_PATH:$PATH:/sbin:/opt/homebrew/
 #export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 alias vim=nvim
+
+eval "$(direnv hook zsh)"
