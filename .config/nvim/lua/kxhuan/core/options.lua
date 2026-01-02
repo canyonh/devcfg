@@ -1,5 +1,12 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+-- Python provider - respects virtualenv if active
+if vim.env.VIRTUAL_ENV then
+  vim.g.python3_host_prog = vim.env.VIRTUAL_ENV .. '/bin/python3'
+else
+  vim.g.python3_host_prog = vim.fn.exepath('python3')
+end
+
 local opt = vim.opt
 
 -- relative number

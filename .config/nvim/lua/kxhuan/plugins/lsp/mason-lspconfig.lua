@@ -19,7 +19,6 @@ return {
                 "jsonls",        -- JSON
                 "yamlls",        -- YAML
                 "rust_analyzer", -- Rust
-                "gopls",         -- Go
                 "ts_ls",         -- TypeScript/JavaScript
                 "nil_ls",        -- Nix
             },

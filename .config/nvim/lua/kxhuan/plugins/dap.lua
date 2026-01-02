@@ -136,10 +136,17 @@ return {
         cwd= "${workspaceFolder}",       -- Run from project root
         stopOnEntry= false,
         pythonPath= python_path,         -- Use virtualenv Python (evaluated at config load)
-        env= {
-          PYTHONPATH = vim.env.PYTHONPATH,  -- Critical: Pass PYTHONPATH so pytest finds modules
-          VIRTUAL_ENV = vim.env.VIRTUAL_ENV,
-        },
+        env= function()
+          -- Build env table dynamically, only including variables that exist
+          local env = {}
+          if vim.env.PYTHONPATH then
+            env.PYTHONPATH = vim.env.PYTHONPATH
+          end
+          if vim.env.VIRTUAL_ENV then
+            env.VIRTUAL_ENV = vim.env.VIRTUAL_ENV
+          end
+          return env
+        end,
       }
     }
 
