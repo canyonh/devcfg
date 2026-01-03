@@ -21,15 +21,12 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current tab in a new tab" })
-keymap.set("n", "gd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 
--- Without telescope it seems to be faster
--- keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
-keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "Show LSP references"})
+-- LSP keymaps are now buffer-local via LspAttach autocmd in lsp/lspconfig.lua
+-- This prevents errors when opening files without LSP support
 
-keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Go to implementation" })
-keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Go to implementation" })
+-- Git
+keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Git blame current line" })
 
 -- TODO(khuang) make range format work
 -- keymap.set("v", "<leader>gf", vim.lsp.buf.format, { desc = "Range formatting" })

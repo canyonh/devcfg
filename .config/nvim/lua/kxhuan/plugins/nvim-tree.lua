@@ -10,7 +10,11 @@ return {
 
     nvimtree.setup({
       view = {
-        width = 35,
+        width = {
+          min = 35,
+          max = 80,
+        },
+        adaptive_size = true,  -- Auto-resize based on content
         relativenumber = true,
       },
       renderer = {
