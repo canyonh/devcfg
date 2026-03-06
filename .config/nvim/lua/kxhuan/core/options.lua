@@ -1,5 +1,3 @@
-vim.cmd("let g:netrw_liststyle = 3")
-
 -- Python provider - respects virtualenv if active
 if vim.env.VIRTUAL_ENV then
   vim.g.python3_host_prog = vim.env.VIRTUAL_ENV .. '/bin/python3'
@@ -14,73 +12,45 @@ opt.relativenumber = true
 opt.number = true
 
 -- tab & indentation
-opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 4 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting a new one
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.autoindent = true
 
 opt.wrap = false
 
 -- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if mixed case is included in the search, assume you want case-sensitive
+opt.ignorecase = true
+opt.smartcase = true
 
 opt.cursorline = true
 
 -- turn on termguicolors for tokyonight colorscheme to work
 opt.termguicolors = true
-opt.background = "dark" -- light/dark
-opt.signcolumn = "yes" -- show sign column so text does not shift
+opt.background = "dark"
+opt.signcolumn = "yes"
 
 -- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+opt.backspace = "indent,eol,start"
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+opt.clipboard:append("unnamedplus")
 
 -- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+opt.splitright = true
+opt.splitbelow = true
 
--- lsp options
--- vim.diagnostic.config({
---     virtual_text = true,
---     virtual_lines = { current_line = true },
---     --underline = true,
---     --update_in_insert = false
--- })
-
---local function jumpWithVirtLineDiags(jumpCount)
---	pcall(vim.api.nvim_del_augroup_by_name, "jumpWithVirtLineDiags") -- prevent autocmd for repeated jumps
---
---	vim.diagnostic.jump { count = jumpCount }
---
---	local initialVirtTextConf = vim.diagnostic.config().virtual_text
---	vim.diagnostic.config {
---		virtual_text = false,
---		virtual_lines = { current_line = true },
---	}
---
---	vim.defer_fn(function() -- deferred to not trigger by jump itself
---		vim.api.nvim_create_autocmd("CursorMoved", {
---			desc = "User(once): Reset diagnostics virtual lines",
---			once = true,
---			group = vim.api.nvim_create_augroup("jumpWithVirtLineDiags", {}),
---			callback = function()
---				vim.diagnostic.config { virtual_lines = false, virtual_text = initialVirtTextConf }
---			end,
---		})
---	end, 1)
---end
---
---vim.keymap.set("n", "ge", function() jumpWithVirtLineDiags(1) end, { desc = "󰒕 Next diagnostic" })
---vim.keymap.set("n", "gE", function() jumpWithVirtLineDiags(-1) end, { desc = "󰒕 Prev diagnostic" })
-
+-- diagnostics (virtual_text + sign icons consolidated here)
 vim.diagnostic.config({
-    virtual_text = true,
-    -- virtual_lines = { current_line = true },
-    --underline = true,
-    --update_in_insert = false
+  virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "❌",
+      [vim.diagnostic.severity.WARN] = "⚠️",
+      [vim.diagnostic.severity.HINT] = "💡",
+      [vim.diagnostic.severity.INFO] = "ℹ️",
+    },
+  },
 })
 
 vim.keymap.set('n', 'go', function()
@@ -94,4 +64,3 @@ vim.keymap.set('n', 'go', function()
     end,
   })
 end)
-

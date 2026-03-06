@@ -6,15 +6,11 @@ return {
 
     -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
-    vim.g.loaded_netwrPlugin = 1
+    vim.g.loaded_netrwPlugin = 1
 
     nvimtree.setup({
       view = {
-        width = {
-          min = 35,
-          max = 80,
-        },
-        adaptive_size = true,  -- Auto-resize based on content
+        width = 30,
         relativenumber = true,
       },
       renderer = {

@@ -8,13 +8,10 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    local auto_select = true
     cmp.setup({
       completion = {
-        completeopt = "menu,menuone, preview,noselect",
+        completeopt = "menu,menuone,preview,noselect",
       },
-
-
       mapping = cmp.mapping.preset.insert({
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<Tab>"] = cmp.mapping.select_next_item(),

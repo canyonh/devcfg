@@ -1,2 +1,2 @@
 #!/bin/bash
-cp ./gdb/.gdbinit ${HOME}
+ln -s ${HOME}/devcfg/gdb/.gdbinit ${HOME}/.gdbinit

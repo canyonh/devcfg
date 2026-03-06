@@ -1,11 +1,9 @@
--- vim.g.mapleader = ' '
 local keymap = vim.keymap -- for conciseness
 
--- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" } )
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- increase/decrease numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increament number" })
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 -- window management
@@ -22,11 +20,3 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current tab in a new tab" })
 
--- LSP keymaps are now buffer-local via LspAttach autocmd in lsp/lspconfig.lua
--- This prevents errors when opening files without LSP support
-
--- Git
-keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Git blame current line" })
-
--- TODO(khuang) make range format work
--- keymap.set("v", "<leader>gf", vim.lsp.buf.format, { desc = "Range formatting" })

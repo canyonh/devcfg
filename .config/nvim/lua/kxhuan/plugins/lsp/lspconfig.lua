@@ -1,53 +1,34 @@
 -- LSP Configuration using Neovim 0.11+ Modern API
 -- LSP servers are auto-installed by Mason (see mason-lspconfig.lua)
--- This file configures how LSP servers behave once installed
+-- Diagnostic signs/virtual_text are configured in core/options.lua
 
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",  -- LSP completion source for nvim-cmp
+    "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-    -- Enable completion capabilities
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Diagnostic symbols in the sign column (gutter)
-    vim.diagnostic.config({
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = "❌",
-          [vim.diagnostic.severity.WARN] = "⚠️",
-          [vim.diagnostic.severity.HINT] = "💡",
-          [vim.diagnostic.severity.INFO] = "ℹ️",
-        },
-      },
-    })
+    -- Servers that only need capabilities (no custom settings)
+    local default_servers = {
+      "clangd", "pyright", "bashls", "cmake", "yamlls",
+      "nil_ls", "jsonls", "rust_analyzer", "ts_ls",
+    }
 
-    -- ============================================================================
-    -- LSP Server Configurations (New API - Neovim 0.11+)
-    -- Servers are installed by Mason (see mason-lspconfig.lua)
-    -- ============================================================================
+    for _, server in ipairs(default_servers) do
+      vim.lsp.config(server, { capabilities = capabilities })
+    end
 
-    -- C/C++ (clangd)
-    vim.lsp.config("clangd", {
-      capabilities = capabilities,
-    })
-
-    -- Python (pyright)
-    vim.lsp.config("pyright", {
-      capabilities = capabilities,
-    })
-
-    -- Lua (lua_ls)
+    -- Lua needs custom settings for neovim development
     vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
-            globals = { "vim" }, -- Recognize 'vim' global
+            globals = { "vim" },
           },
           workspace = {
             library = vim.api.nvim_get_runtime_file("", true),
@@ -58,54 +39,16 @@ return {
       },
     })
 
-    -- Bash (bashls)
-    vim.lsp.config("bashls", {
-      capabilities = capabilities,
-    })
-
-    -- CMake (cmake)
-    vim.lsp.config("cmake", {
-      capabilities = capabilities,
-    })
-
-    -- YAML (yamlls)
-    vim.lsp.config("yamlls", {
-      capabilities = capabilities,
-    })
-
-    -- Nix (nil_ls)
-    vim.lsp.config("nil_ls", {
-      capabilities = capabilities,
-    })
-
-    -- JSON (jsonls)
-    vim.lsp.config("jsonls", {
-      capabilities = capabilities,
-    })
-
-    -- Rust (rust_analyzer)
-    vim.lsp.config("rust_analyzer", {
-      capabilities = capabilities,
-    })
-
-    -- TypeScript/JavaScript (ts_ls)
-    vim.lsp.config("ts_ls", {
-      capabilities = capabilities,
-    })
-
     -- Enable all configured LSP servers
-    vim.lsp.enable({
-      "clangd", "pyright", "lua_ls", "bashls", "cmake", "yamlls",
-      "nil_ls", "jsonls", "rust_analyzer", "ts_ls",
-    })
+    local all_servers = vim.list_extend({ "lua_ls" }, default_servers)
+    vim.lsp.enable(all_servers)
 
-    -- LspAttach autocmd for buffer-local keymaps (replaces on_attach)
+    -- Buffer-local keymaps (replaces on_attach)
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local bufnr = args.buf
         local opts = { buffer = bufnr, silent = true }
 
-        -- These keymaps are only active when LSP is attached to the buffer
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
         vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", vim.tbl_extend("force", opts, { desc = "Show LSP references" }))

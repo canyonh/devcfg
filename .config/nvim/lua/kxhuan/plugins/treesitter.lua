@@ -4,9 +4,6 @@ return {
   build = ":TSUpdate",
   lazy = false,
   priority = 100,
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
   config = function()
     -- Parsers to install (install manually with :TSInstall or :TSUpdate)
     local parsers = {
