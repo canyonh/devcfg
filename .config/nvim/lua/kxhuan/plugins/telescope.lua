@@ -33,7 +33,10 @@ return {
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", { desc = "Find string under cursor in current file" })
 
     -- LSP Symbol keymaps
-    keymap.set("n", "<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", { desc = "Search workspace symbols" })
+    keymap.set("n", "<leader>ws", function()
+      require("telescope.builtin").lsp_dynamic_workspace_symbols({ default_text = vim.fn.expand("<cword>") })
+    end, { desc = "Search workspace symbol under cursor" })
+    keymap.set("n", "<leader>wS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", { desc = "Search workspace symbols" })
     keymap.set("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search document symbols" })
 
   end,
