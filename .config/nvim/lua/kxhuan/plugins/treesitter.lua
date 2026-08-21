@@ -32,7 +32,8 @@ return {
     -- Enable treesitter highlighting automatically
     vim.api.nvim_create_autocmd('FileType', {
       pattern = '*',
-      callback = function()
+      callback = function(args)
+        if vim.b[args.buf].big_file then return end
         pcall(vim.treesitter.start)
       end,
     })

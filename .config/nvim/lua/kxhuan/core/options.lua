@@ -40,6 +40,13 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
+-- faster response (gitsigns, diagnostics, CursorHold)
+opt.updatetime = 250
+
+-- better diffs: histogram algorithm + line-level matching
+opt.diffopt:remove("linematch:40")
+opt.diffopt:append({ "algorithm:histogram", "linematch:60", "indent-heuristic" })
+
 -- diagnostics (virtual_text + sign icons consolidated here)
 vim.diagnostic.config({
   virtual_text = true,
@@ -53,14 +60,12 @@ vim.diagnostic.config({
   },
 })
 
+-- Toggle expanded diagnostics (virtual_lines) for the current line
+local diag_lines_on = false
 vim.keymap.set('n', 'go', function()
-  vim.diagnostic.config({ virtual_lines = { current_line = true }, virtual_text = true})
-
-  vim.api.nvim_create_autocmd('CursorMoved', {
-    group = vim.api.nvim_create_augroup('line-diagnostics', { clear = true }),
-    callback = function()
-      vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
-      return true
-    end,
+  diag_lines_on = not diag_lines_on
+  vim.diagnostic.config({
+    virtual_text = true,
+    virtual_lines = diag_lines_on and { current_line = true } or false,
   })
-end)
+end, { desc = "Toggle expanded line diagnostics" })
