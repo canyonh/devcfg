@@ -1,8 +1,9 @@
 #!/bin/sh
+# $ZDOTDIR/.zshrc — INTERACTIVE shells only. Machine env lives in .zshenv.
 
-export ZDOTDIR=$HOME/devcfg/.config/zsh
 HISTFILE=~/.zsh_history
 setopt appendhistory
+setopt EXTENDED_HISTORY
 
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
@@ -12,7 +13,6 @@ zle_highlight=('paste:none')
 
 # beeping is annoying
 unsetopt BEEP
-
 
 # completions
 autoload -Uz compinit
@@ -62,7 +62,7 @@ bindkey "^j" down-line-or-beginning-search # Down
 bindkey -r "^u"
 bindkey -r "^d"
 
-# FZF 
+# FZF
 # TODO update for mac
 # ubuntu
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
@@ -85,20 +85,20 @@ compinit
 autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
 
-# Environment variables set everywhere
-export EDITOR="nvim"
-# export TERMINAL="alacritty"
-export BROWSER="brave"
-
-# For QT Themes
-export QT_QPA_PLATFORMTHEME=qt5ct
-
-# @todo there are some macos paths
-export PATH=$HOME/bin:/usr/local/bin:$PYTHON_BIN_PATH:$PATH:/sbin:/opt/homebrew/bin:/Users/kxhuan/Library/Python/3.9/bin:/opt/homebrew/opt/openjdk/bin
-
-# @todo enable jdk for C++
-#export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-
 alias vim=nvim
 
+# direnv — installs an interactive precmd hook; must stay in .zshrc
 eval "$(direnv hook zsh)"
+
+untilfail() {
+        COUNTER=0
+        while [ $? -eq 0 ]; do
+            let COUNTER=COUNTER+1
+            printf "RUN COUNTER %d\n" $COUNTER
+           "$@"
+       done
+}
+
+if command -v dx >/dev/null 2>&1 && dx env >/dev/null 2>&1; then
+  eval "$(dx env)"
+fi
